@@ -9,15 +9,15 @@
 # === Parameters
 #
 # [*dbuser*]
-#   DB User for phpmyadmin controll Database.
+#   DB User for phpmyadmin control Database.
 #   *Optional* (defaults to _pma_)
 #
 # [*dbpass*]
-#   DB password for phpmyadmin controll Database.
+#   DB password for phpmyadmin control Database.
 #   *Optional* (defaults to _password_)
 #
 # [*dbname*]
-#   DB name for phpmyadmin controll Database.
+#   DB name for phpmyadmin control Database.
 #   *Optional* (defaults to _phpmyadmin_)
 #
 # === Examples
