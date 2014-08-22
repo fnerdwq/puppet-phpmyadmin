@@ -14,8 +14,7 @@
 
 ##Overview
 
-This small phpmyadmin module installs and configure phpmyadmin.
-Optionally razor and pyzor can be managed.
+This small phpmyadmin module installs and configures phpmyadmin.
 
 ##Module Description
 
