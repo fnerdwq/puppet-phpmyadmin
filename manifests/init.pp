@@ -1,6 +1,7 @@
 # == Class: phpmyadmin
 #
 # This class installs and configures phpmyadmin.
+# Does _not_ install/configure a webserver nor php.
 #
 # This works on Debian like systems.
 # Puppet Version >= 3.4.0
