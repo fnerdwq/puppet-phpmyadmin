@@ -1,7 +1,7 @@
-# == Class: phpmyadmin
+# == Class: phpmyadmin::site
 #
-# This class only makes parameters available.
-# Do _not_ include this class directly.
+# This class installs and configures phpmyadmin site.
+# Does _not_ install/configure a webserver nor php.
 #
 # This works on Debian like systems.
 # Puppet Version >= 3.4.0
@@ -20,6 +20,10 @@
 #   DB name for phpmyadmin control Database.
 #   *Optional* (defaults to _phpmyadmin_)
 #
+# === Examples
+#
+# include phpmyadmin
+#
 # === Authors
 #
 # Frederik Wagner <wagner@wagit.de>
@@ -28,16 +32,14 @@
 #
 # Copyright 2014 Frederik Wagner
 #
-class phpmyadmin (
-  $dbuser = $phpmyadmin::params::dbuser,
-  $dbpass = $phpmyadmin::params::dbpass,
-  $dbname = $phpmyadmin::params::dbname,
-) inherits phpmyadmin::params {
+class phpmyadmin::site {
 
-  validate_string($dbuser)
-  validate_string($dbpass)
-  validate_string($dbname)
+  include phpmyadmin
 
-  # nothing to do here, only variables defined.
+  contain phpmyadmin::site::install
+  contain phpmyadmin::site::config
+
+  Class['phpmyadmin::site::install'] ->
+  Class['phpmyadmin::site::config']
 
 }

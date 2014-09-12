@@ -17,6 +17,10 @@
 #   Order in the selction list on login page.
 #   *Optional* (defaults to _10_)
 #
+# [*create_pmatables*]
+#   Shoulde the PHPMyAdmin amangement tables be created?
+#   *Optional* (defaults to _true_)
+#
 # === Examples
 #
 # include phpmyadmiin::node
@@ -30,15 +34,20 @@
 # Copyright 2014 Frederik Wagner
 #
 class phpmyadmin::node (
-  $verbose = $::fqdn,
-  $order   = 10,
-) {
+  $verbose          = $phpmyadmin::node::params::verbose,
+  $order            = $phpmyadmin::node::params::order,
+  $create_pmatables = $phpmyadmin::node::params::create_pmatables,
+) inherits phpmyadmin::node::params {
 
-  @@concat::fragment { "phpmyadmin config NODE - ${::fqdn}":
-    target  => '/etc/phpmyadmin/config.inc.php',
-    content => template('phpmyadmin/config.inc.php.fragment.erb'),
-    order   => $order,
+  validate_string($verbose)
+  validate_re($order,'^\d+$')
+  validate_bool($create_pmatables)
+
+  include phpmyadmin
+  contain phpmyadmin::node::export
+
+  if $create_pmatables {
+    contain phpmyadmin::node::create_pmatables
   }
-
 
 }

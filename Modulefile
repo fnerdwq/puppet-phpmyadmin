@@ -8,3 +8,4 @@ description 'Small module to manage PHPMyAdmin on Debian like systems'
 project_page 'https://github.com/fnerdwq/puppet-phpmyadmin'
 
 dependency 'puppetlabs/concat', '>= 1.1.0'
+dependency 'puppetlabs/stdlib', '>= 1.0.0'

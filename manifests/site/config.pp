@@ -1,5 +1,5 @@
 # (private)
-class phpmyadmin::config {
+class phpmyadmin::site::config {
 
   $dbuser = $phpmyadmin::dbuser
   $dbpass = $phpmyadmin::dbpass

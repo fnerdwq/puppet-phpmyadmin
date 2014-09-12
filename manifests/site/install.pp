@@ -1,5 +1,5 @@
 # (private)
-class phpmyadmin::install {
+class phpmyadmin::site::install {
 
   package {'phpmyadmin': ensure => installed }
 
