@@ -20,7 +20,7 @@ class phpmyadmin::node::create_pmauser {
     ensure     => present,
     user       => "${dbuser}@%",
     table      => 'mysql.user',
-    #privileges => ['SELECT (HOST, USER, SELECT_PRIV, INSERT_PRIV, UPDATE_PRIV, DELETE_PRIV, CREATE_PRIV, DROP_PRIV, RELOAD_PRIV, SHUTDOWN_PRIV, PROCESS_PRIV, FILE_PRIV, GRANT_PRIV, REFERENCES_PRIV, INDEX_PRIV, ALTER_PRIV, SHOW_DB_PRIV, SUPER_PRIV, CREATE_TMP_TABLE_PRIV, LOCK_TABLES_PRIV, EXECUTE_PRIV, REPL_SLAVE_PRIV, REPL_CLIENT_PRIV)'],
+    #privileges => ['SELECT (Host, User, Select_priv, Insert_priv, Update_priv, Delete_priv, Create_priv, Drop_priv, Reload_priv, Shutdown_priv, Process_priv, File_priv, Grant_priv, References_priv, Index_priv, Alter_priv, Show_db_priv, Super_priv, Create_tmp_table_priv, Lock_tables_priv, Execute_priv, Repl_slave_priv, Repl_client_priv)'],
     privileges => ['SELECT'],
   }
 
@@ -35,7 +35,7 @@ class phpmyadmin::node::create_pmauser {
     ensure     => present,
     user       => "${dbuser}@%",
     table      => 'mysql.tables_priv',
-    #privileges => ['SELECT (HOST, DB, USER, TABLE_NAME, TABLE_PRIV, COLUMN_PRIV)'],
+    #privileges => ['SELECT (Host, Db, User, Table_name, Table_priv, Column_priv)'],
     privileges => ['SELECT'],
   }
 
