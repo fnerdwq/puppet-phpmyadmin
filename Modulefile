@@ -9,4 +9,6 @@ project_page 'https://github.com/fnerdwq/puppet-phpmyadmin'
 
 dependency 'puppetlabs/concat', '>= 1.1.0'
 dependency 'puppetlabs/stdlib', '>= 1.0.0'
-dependency 'puppetlabs/mysql', '>= 2.0.0'
+
+# this should be the version (tocome) including column-privileges
+dependency 'puppetlabs/mysql', '> 2.3.1'
