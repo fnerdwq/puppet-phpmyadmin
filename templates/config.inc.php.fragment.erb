@@ -2,7 +2,11 @@
     /* SERVER: <%= @verbose -%> */
 
     /* Authentication type */
-    $cfg['Servers'][$i]['auth_type'] = 'cookie';
+    $cfg['Servers'][$i]['auth_type'] = '<%= @auth_type -%>';
+<% if @auth_type == 'config' -%>
+    $cfg['Servers'][$i]['user'] = '<%= @user -%>';
+    $cfg['Servers'][$i]['password'] = '<%= @password -%>';
+<% end -%>
 
     /* Server parameters */
     $cfg['Servers'][$i]['verbose'] = '<%= @verbose -%>';

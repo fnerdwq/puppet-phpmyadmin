@@ -13,6 +13,18 @@
 #   Verbose name of server to be shown in phpmyadmin login page.
 #   *Optional* (defaults to _$::fqdn_)
 #
+# [*auth_type*]
+#   Selection of authentication type (possible 'cookie', 'config').
+#   *Optional* (defaults to _cookie_)
+#
+# [*user*]
+#   For auth_type 'config' set user.
+#   *Optional* (defaults to _undef_)
+#
+# [*password*]
+#   For auth_type 'config' set password.
+#   *Optional* (defaults to _undef_)
+#
 # [*order*]
 #   Order in the selction list on login page.
 #   *Optional* (defaults to _10_)
@@ -39,13 +51,21 @@
 #
 class phpmyadmin::node (
   $verbose          = $phpmyadmin::node::params::verbose,
+  $auth_type        = $phpmyadmin::node::params::auth_type,
+  $user             = $phpmyadmin::node::params::user,
+  $password         = $phpmyadmin::node::params::password,
   $order            = $phpmyadmin::node::params::order,
-  $create_pmauser    = $phpmyadmin::node::params::create_pmatables,
+  $create_pmauser   = $phpmyadmin::node::params::create_pmauser,
   $create_pmatables = $phpmyadmin::node::params::create_pmatables,
 ) inherits phpmyadmin::node::params {
 
   validate_string($verbose)
   validate_re($order,'^\d+$')
+  validate_re($auth_type,['^cookie$', '^config$'])
+  if $auth_type == 'config' {
+    validate_string($user)
+    validate_string($password)
+  }
   validate_bool($create_pmauser)
   validate_bool($create_pmatables)
 
